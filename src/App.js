@@ -12,6 +12,8 @@ import {GrFormNext, GrFormPrevious} from "react-icons/gr"
 function App() {
     const [firstPage, setFirstPage] = useState(1);
     const [tournaments, setTournaments] = useState(Data);
+
+   
     
     const nPage = Math.ceil(Data.length / 3);
     const numbers = [...Array(nPage+ 1).keys()].slice(1);
@@ -35,10 +37,9 @@ function App() {
     }
     if(firstPage === 1) {
         return(
-<main className="bg-slate-100 container">
-    <section  className="">
-         <div className="flex absolute">
-             <nav className="">
+    <section>
+         <div>
+             <nav>
                 <h1>{`Round ${firstPage}`}</h1>
                 <div>
                     <GrFormPrevious onClick={prevPage}/>
@@ -56,10 +57,9 @@ function App() {
            <Footer />
 
         </div>
-      
-     </section>
-     <button onClick={() => changeCurrentPage(numbers[1])}>Proceed to Round 2</button>
-     </main>
+        <button onClick={() => changeCurrentPage(numbers[1])}>Proceed to Round 2</button>
+    </section>
+       
            
         )
     } else if(firstPage === 2) {

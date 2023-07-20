@@ -4,22 +4,9 @@
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 70vh;
-  width: 100%;
-  margin: 10px auto;
-  background: blue;
-  position: relative;
- 
 }
