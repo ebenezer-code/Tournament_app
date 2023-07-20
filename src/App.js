@@ -37,76 +37,101 @@ function App() {
     }
     if(firstPage === 1) {
         return(
-    <section>
-         <div>
-             <nav>
-                <h1>{`Round ${firstPage}`}</h1>
-                <div>
-                    <GrFormPrevious onClick={prevPage}/>
+    <section className=" w-screen min-h-screen bg-[#F7F7F7] py-20">
+        <main className="bg-white container mx-auto rounded-[20px] p-4">
+             <nav className=" flex items-center justify-between border-b py-2">
+                <h1 className="tracking-[0.14px] text-[14px] text-[#0E0E0E]">{`Round ${firstPage}`}</h1>
+                <div className="flex items-center space-x-6">
+                    <GrFormPrevious onClick={prevPage} />
                     {numbers.map((n, index) => {
-                        return (<li key={index} className={`page item ${firstPage === n? "active" : ""}`}><button onClick={() => changeCurrentPage(n)}>{n}</button></li>
+                        return (<li key={index} className="list-none"><button className={`page item ${firstPage === n? "bg-[#A8d841] text-[#FFF]" : ""} p-2 text-[12px] font-medium tracking-[0.12px]`} onClick={() => changeCurrentPage(n)}>{n}</button></li>
                     )})}
                    <GrFormNext onClick={nextPage}/>
                 </div>
             </nav>
-          { tournaments.filter((item, index) => index <=3 ).map((player, index) => {
-            return (
-                <FirstRound player = {player} key={index} setTournaments = {setTournaments}/>
-            )
-           })}
-           <Footer />
-
+            <div className=" grid grid-cols-3 mt-[20px]">
+                <div className="grid grid-cols-2 col-span-2 gap-6 ">
+                    { tournaments.filter((item, index) => index <=3 ).map((player, index) => {
+                    return (
+                        <FirstRound player = {player} key={index} setTournaments = {setTournaments}/>
+                    )
+                    })}
+                </div>
+                <Footer />
+            </div>
+        <div className="flex justify-center items-center mt-40">
+          <button onClick={() => changeCurrentPage(numbers[1])} className=" bg-[#9CD326] w-[422px] h-[52px] rounded">Proceed to Round 2</button>
         </div>
-        <button onClick={() => changeCurrentPage(numbers[1])}>Proceed to Round 2</button>
+       
+     </main>       
     </section>
        
            
         )
     } else if(firstPage === 2) {
         return (
-        <section>
-             <div>
-                <nav>
-                <h1>{`Round ${firstPage}`}</h1>
-                <div>
+        <section className=" w-screen min-h-screen bg-[#F7F7F7] py-20">
+            <main className="bg-white container mx-auto rounded-[20px] p-4">
+                <nav className=" flex items-center justify-between border-b py-2">
+                <h1 className="tracking-[0.14px] text-[14px] text-[#0E0E0E]">{`Round ${firstPage}`}</h1>
+                <div className="flex items-center space-x-6">
                     <GrFormPrevious onClick={prevPage}/>
                     {numbers.map((n, index) => {
-                        return (<li key={index} className={`page item ${firstPage === n? "active" : ""}`}><button onClick={() => changeCurrentPage(n)}>{n}</button></li>
+                        return (<li key={index} className="list-none"><button onClick={() => changeCurrentPage(n)} className={`page item ${firstPage === n? "bg-[#A8d841] text-[#FFF]" : ""} p-2 text-[12px] font-medium tracking-[0.12px]`}>{n}</button></li>
                     )})}
                    <GrFormNext onClick={nextPage}/>
                 </div>
             </nav>
-          { tournaments.filter((item, index) => index >=4 && index <=5 ).map((player, index) => {
+         <div className=" grid grid-cols-3 mt-[20px]">
+            <div className="grid grid-cols-2 col-span-2 gap-6 ">
+            { tournaments.filter((item, index) => index >=4 && index <=5 ).map((player, index) => {
             return (
                 <SecondRound player = {player} key={index} setTournaments = {setTournaments}/>
             )
            })}
-           <Footer />
             </div>
-            <button onClick={() => changeCurrentPage(numbers[2])}>Proceed to Round 3</button>
+            <Footer />
+        </div>
+          
+           <div className="flex justify-center items-center mt-40">
+            <button onClick={() => changeCurrentPage(numbers[2])}  className=" bg-[#9CD326] w-[422px] h-[52px] rounded">Proceed to Round 3</button>
+           </div>
+           
+            </main>
+            
         </section>
            
         )
     } else if(firstPage === 3) {
         return (
-            <div>
-                <nav>
-                <h1>{`Round ${firstPage}`}</h1>
-                <div>
+<section className=" w-screen min-h-screen bg-[#F7F7F7] py-20">
+            <main className="bg-white container mx-auto rounded-[20px] p-4">
+                <nav className=" flex items-center justify-between border-b py-2">
+                <h1 className="tracking-[0.14px] text-[14px] text-[#0E0E0E]">{`Round ${firstPage}`}</h1>
+                <div className="flex items-center space-x-6">
                     <GrFormPrevious onClick={prevPage}/>
                     {numbers.map((n, index) => {
-                        return (<li key={index} className={`page item ${firstPage === n? "active" : ""}`}><button onClick={() => changeCurrentPage(n)}>{n}</button></li>
+                        return (<li key={index} className="list-none"><button onClick={() => changeCurrentPage(n)} className={`page item ${firstPage === n? "bg-[#A8d841] text-[#FFF]" : ""} p-2 text-[12px] font-medium tracking-[0.12px]`}>{n}</button></li>
                     )})}
                    <GrFormNext onClick={nextPage}/>
                 </div>
             </nav>
-          { tournaments.filter((item, index) => index > 5 ).map((player, index) => {
+         <div className=" grid grid-cols-3 mt-[20px]">
+            <div className="grid grid-cols-2 col-span-2 gap-6 ">
+            { tournaments.filter((item, index) => index > 5 ).map((player, index) => {
             return (
                 <FinalRound player = {player} key={index} setTournaments = {setTournaments}/>
             )
            })}
-           <Footer />
             </div>
+            <Footer />
+        </div>
+          
+           
+            </main>
+            
+        </section>
+          
         )
     }
     

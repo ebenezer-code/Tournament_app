@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 
 function FirstRound({player}) {
-    const {_id, challenged, challenger} = player;
+    const {_id, challenged, challenger, winner} = player;
+    const [isChallenger, setIsChallenger] = useState(false);
+    const [isChallenged, setIsChallenged] = useState(false);
+    useEffect(() => {
+        if(challenger.firstname === winner?.firstname) {
+            setIsChallenger(true);
+        }
+        if(challenged?.firstname === winner?.firstname) {
+            setIsChallenged(true);
+        }
+    },[]);
     return(
         <section key={_id}>
-                <ul>
-                    <div>
-                        <li>1</li>
-                        <li>{`${challenged? challenged.firstname: "Ogunyemi"} ${challenged? challenged.lastname: "Timilehin"}`}</li>
-                    </div>
-                    <div>
-                        <li>2</li>
-                        <li>{`${challenger?.firstname} ${challenger?.lastname}`}</li>
-                    </div>
-                </ul>
+                <table className="rounded-2xl border">
+                 <tbody>
+                    <tr>
+                    <td className= {`${isChallenged? "bg-[#82B020]" : "bg-[#AFAFAF]"} p-2 border`}>1</td>
+                    <td className="p-2 border">{`${challenged? challenged.firstname: "Ogunyemi"} ${challenged? challenged.lastname: "Timilehin"}`}</td>
+                    </tr>
+            
+                    <tr>
+                    <td className= {`${isChallenger? "bg-[#82B020]" : "bg-[#AFAFAF]"} p-2 border`}>2</td>
+                    <td className="p-2 border">{`${challenger?.firstname} ${challenger?.lastname}`}</td>
+                    </tr>
+                </tbody>
+                </table>
        </section>
     )
 }
