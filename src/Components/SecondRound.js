@@ -15,7 +15,7 @@ function SecondRound({player}) {
         if(challenged?.firstname === winner?.firstname) {
             setIsChallenged(true);
         }
-    },[]);
+    },[challenger, challenged, winner]);
     return(
         <section key={_id}>
                 <table className="rounded-2xl border">
