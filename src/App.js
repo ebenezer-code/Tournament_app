@@ -35,11 +35,10 @@ function App() {
     }
     if(firstPage === 1) {
         return(
- <article className="bg-slate-100">
-    <section>
-  
-         <div>
-             <nav>
+<main className="bg-slate-100 container">
+    <section  className="">
+         <div className="flex absolute">
+             <nav className="">
                 <h1>{`Round ${firstPage}`}</h1>
                 <div>
                     <GrFormPrevious onClick={prevPage}/>
@@ -57,9 +56,10 @@ function App() {
            <Footer />
 
         </div>
+      
      </section>
      <button onClick={() => changeCurrentPage(numbers[1])}>Proceed to Round 2</button>
-    </article>
+     </main>
            
         )
     } else if(firstPage === 2) {
